@@ -36,12 +36,27 @@ public class ScoreScene extends BaseScene{
 		obackground = new Sprite(centerX,centerY,resourcesManager.score_bgroundRegion,vboManager);
 		this.attachChild(obackground);
 		
-		final Text scoreText = new Text(centerX+250, centerY+150,resourcesManager.font, Integer.toString(GameManager.getInstance().loadHighScore()),
+		int score; String user;
+		if(GameManager.getInstance().mScoreDb.contains("HIGHSCORE_LABEL") && GameManager.getInstance().mScoreDb.contains("HIGHSCORE_USERNAME"))
+		{
+			user =GameManager.getInstance().loadHighScoreUserName();
+			score=GameManager.getInstance().loadHighScore();
+		}
+		else
+		{
+			user =GameManager.getInstance().user_name;
+			score=GameManager.getInstance().currentScore;
+		}
+			
+		
+		
+		final Text scoreText = new Text(centerX+250, centerY+150,resourcesManager.font, Integer.toString(score),
 				"xxxxxxxxxxxx".length(),vboManager);
 		scoreText.setBlendFunction(GLES20.GL_SRC_ALPHA, GLES20.GL_ONE_MINUS_SRC_ALPHA);
 		this.attachChild(scoreText);
 		
-		final Text userText = new Text(centerX+250, centerY+250,resourcesManager.font, GameManager.getInstance().loadHighScoreUserName(),
+		
+		final Text userText = new Text(centerX+250, centerY+250,resourcesManager.font, user,
 				"xxxxxxxxxxxxxxxxxxxxx".length(), vboManager);
 		scoreText.setBlendFunction(GLES20.GL_SRC_ALPHA, GLES20.GL_ONE_MINUS_SRC_ALPHA);
 		this.attachChild(userText);

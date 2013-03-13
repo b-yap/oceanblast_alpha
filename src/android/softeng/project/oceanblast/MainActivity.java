@@ -42,7 +42,7 @@ public class MainActivity extends BaseGameActivity
 		{
 		Log.d("-------onCreateEngineOptions()---------", " ");
 				camera = new Camera(0, 0, ConstantsList.CAMERA_WIDTH, ConstantsList.CAMERA_HEIGHT);
-		EngineOptions engineOptions = new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED, new FillResolutionPolicy(), camera);
+		EngineOptions engineOptions = new EngineOptions(true, ScreenOrientation.LANDSCAPE_SENSOR, new FillResolutionPolicy(), camera);
 		engineOptions.getAudioOptions().setNeedsMusic(true);
 		engineOptions.getTouchOptions().setNeedsMultiTouch(true);
 

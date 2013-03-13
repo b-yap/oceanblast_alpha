@@ -32,7 +32,7 @@ public class GameManager {
 	private static final String USERNAME ="username";
 	private static final String TOGGLE_MUSIC ="toggle_music";
 
-	private SharedPreferences mScoreDb = ResourcesManager.getInstance().activity.getSharedPreferences(HIGHSCORE_DB_NAME, Context.MODE_PRIVATE);
+	public SharedPreferences mScoreDb = ResourcesManager.getInstance().activity.getSharedPreferences(HIGHSCORE_DB_NAME, Context.MODE_PRIVATE);
 	private SharedPreferences.Editor mScoreDbEditor = this.mScoreDb.edit();
 	private boolean setMusic = true;
 	public String user_name = "visitor";

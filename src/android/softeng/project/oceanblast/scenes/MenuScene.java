@@ -16,6 +16,7 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.sprite.ButtonSprite.OnClickListener;
 import org.andengine.entity.text.Text;
 
+import android.content.SharedPreferences;
 import android.opengl.GLES20;
 import android.softeng.project.oceanblast.ConstantsList;
 import android.softeng.project.oceanblast.InputText;
@@ -51,12 +52,11 @@ public class MenuScene extends BaseScene {
 		createMenuButtons();
 		
 		//user data		
-		if(!GameManager.getInstance().loadUserName().equals(null))
-		{		
+			
 			Log.d("load data", " ");
-			inputUserName = GameManager.getInstance().loadUserName();
-		
-		}else
+			if(GameManager.getInstance().mScoreDb.contains("USERNAME"))
+				inputUserName = GameManager.getInstance().loadUserName();
+			else
 				inputUserName = GameManager.getInstance().user_name;
 			
 		final Text userName = new Text(15, 15, resourcesManager.font, inputUserName,
