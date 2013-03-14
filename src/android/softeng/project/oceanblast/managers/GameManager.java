@@ -35,7 +35,7 @@ public class GameManager {
 	public SharedPreferences mScoreDb = ResourcesManager.getInstance().activity.getSharedPreferences(HIGHSCORE_DB_NAME, Context.MODE_PRIVATE);
 	private SharedPreferences.Editor mScoreDbEditor = this.mScoreDb.edit();
 	private boolean setMusic = true;
-	public String user_name = "visitor";
+	public String user_name = this.loadUserName();
 	
 	public GameManager(){}
 	

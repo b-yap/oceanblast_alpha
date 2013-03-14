@@ -85,6 +85,7 @@ public class SceneManager {
 			break;
 			}	
 			case SCORE:{
+				scoreScene.createScene();
 				menuScene.setChildScene(scoreScene);
 				Log.d("set high score ", " ");
 				currentScene =scoreScene;

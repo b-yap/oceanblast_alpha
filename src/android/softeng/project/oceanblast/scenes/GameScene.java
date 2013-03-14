@@ -85,8 +85,14 @@ public class GameScene extends BaseScene implements IOnSceneTouchListener{
 		GameManager.getInstance().gameHandler.pause();
 		
 		if(gameOver==false)
-			SceneManager.getInstance().setCurrentScene(SceneType.PAUSE);
+		{
+			if(currentScore > GameManager.getInstance().loadHighScore())
+			{
+				GameManager.getInstance().saveHighScore(currentScore);
+			}
 				
+			SceneManager.getInstance().setCurrentScene(SceneType.PAUSE);
+		}		
 	}
 
 	@Override

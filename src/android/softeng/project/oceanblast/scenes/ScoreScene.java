@@ -26,9 +26,10 @@ import android.softeng.project.oceanblast.managers.SceneManager;
 public class ScoreScene extends BaseScene{
 
 	private Sprite obackground;
+	private Text scoreText;
+	private Text userText;
 	@Override
 	public void createScene() {
-
 		engine.registerUpdateHandler(new FPSLogger());
 		final float centerX = (ConstantsList.CAMERA_WIDTH - resourcesManager.score_bgroundRegion.getWidth()) / 2;
 		final float centerY = (ConstantsList.CAMERA_HEIGHT - resourcesManager.score_bgroundRegion.getHeight()) / 2;
@@ -50,13 +51,13 @@ public class ScoreScene extends BaseScene{
 			
 		
 		
-		final Text scoreText = new Text(centerX+250, centerY+150,resourcesManager.font, Integer.toString(score),
+		scoreText = new Text(centerX+250, centerY+150,resourcesManager.font, Integer.toString(score),
 				"xxxxxxxxxxxx".length(),vboManager);
 		scoreText.setBlendFunction(GLES20.GL_SRC_ALPHA, GLES20.GL_ONE_MINUS_SRC_ALPHA);
 		this.attachChild(scoreText);
 		
 		
-		final Text userText = new Text(centerX+250, centerY+250,resourcesManager.font, user,
+		userText = new Text(centerX+250, centerY+250,resourcesManager.font, user,
 				"xxxxxxxxxxxxxxxxxxxxx".length(), vboManager);
 		scoreText.setBlendFunction(GLES20.GL_SRC_ALPHA, GLES20.GL_ONE_MINUS_SRC_ALPHA);
 		this.attachChild(userText);
@@ -67,6 +68,7 @@ public class ScoreScene extends BaseScene{
 
 	@Override
 	public void onBackKeyPressed() {
+		this.disposeScene();
 		SceneManager.getInstance().setCurrentScene(SceneType.MENU);
 		
 	}
@@ -79,7 +81,14 @@ public class ScoreScene extends BaseScene{
 
 	@Override
 	public void disposeScene() {
-		// TODO Auto-generated method stub
+		scoreText.detachSelf();
+		scoreText.dispose();
+		userText.detachSelf();
+		userText.dispose();
+		obackground.detachSelf();
+		obackground.dispose();
+		this.detachSelf();
+		this.dispose();	
 		
 	}
 

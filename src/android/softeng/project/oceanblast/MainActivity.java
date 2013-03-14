@@ -23,6 +23,7 @@ import org.andengine.ui.activity.BaseGameActivity;
 
 
 import android.softeng.project.oceanblast.ConstantsList.SceneType;
+import android.softeng.project.oceanblast.managers.GameManager;
 import android.softeng.project.oceanblast.managers.ResourcesManager;
 import android.softeng.project.oceanblast.managers.SceneManager;
 import android.util.Log;
@@ -37,6 +38,7 @@ public class MainActivity extends BaseGameActivity
 		//managers
 		private SceneManager sceneManager;
 		private ResourcesManager resourcesManager;
+		private GameManager gameManager;
 		
 		public EngineOptions onCreateEngineOptions()
 		{
@@ -85,7 +87,10 @@ public class MainActivity extends BaseGameActivity
 
 					public void onTimePassed(TimerHandler pTimerHandler) {
 				  		  	mEngine.unregisterUpdateHandler(pTimerHandler);
-			               SceneManager.getInstance().createMenuScene();
+				  		  	
+				  		  	
+				  		  	
+				  		  	SceneManager.getInstance().createMenuScene();
 			                
 					}
 		}));
